@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project belongs to Exodus and  was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is very important and  belongs to Exodus  and  was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

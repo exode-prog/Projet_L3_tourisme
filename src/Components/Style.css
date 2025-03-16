@@ -1,0 +1,30 @@
+#headerbg{
+
+    background-color: rgb(2, 22, 243);
+    color: white;
+    padding: 10px;
+}#footerbg{
+
+    background-color: rgb(2, 22, 243);
+    color: #fff;
+}
+#navbarSupportedContent{
+    color: white;
+    text-align: center;
+}
+#navbarDropdown{
+    color: white;
+
+}
+
+#body{
+
+   
+    background-size: cover; /* Ajuste l'image pour couvrir toute la page */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    display: flex;
+    justify-content: center;
+    
+  }

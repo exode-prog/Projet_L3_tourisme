@@ -1,6 +1,6 @@
 import React from 'react'
 import Style from './Style.css'
-import {Fafacebook,FaTwitter,FaLinkedin,FaYoutube} from 'react-icons/fa'
+import {FaFacebook, FaTwitter, FaLinkedin, FaYoutube} from 'react-icons/fa'
 import { DiJava } from 'react-icons/di'
 
 function Footer(){
@@ -9,28 +9,31 @@ function Footer(){
         <React.Fragment>
             <footer id="footerbg" className="p-4">
                 <section className="d-flex justify-content-center">
-                    <div className="me-5 d-none d-lg-block">
+                    <div className="me-5 d-none d-lg-block mx-3">
                         <span>Restez-connecter sur nos reseaux sociaux</span>
                         
                      </div>
-                    <div>
-                        <a href="">Fafacebook</a>
-                        <a href="">FaTwitter</a>
-                        <a href="">FaLinkedin</a>
-                        <a href="">FaYoutube</a>
+                     <div className="d-flex gap-3">
+                        <a href="#" className="text-white fs-3 mx-3">
+                            <FaFacebook />
+                        </a>
+                        <a href="#" className="text-white fs-3 mx-3">
+                            <FaTwitter />
+                        </a>
+                        <a href="#" className="text-white fs-3 mx-3 ">
+                            <FaLinkedin />
+                        </a>
+                        <a href="#" className="text-white fs-3 mx-3 ">
+                            <FaYoutube />
+                        </a>
                     </div>
-
                 </section>
                 <div className="container p-4">
                     <div className="row">
                         <div className="col-sm-4">
             <h5>Contacts</h5>
             <h5>A propos</h5>
-            <p>L'informatique est une discipline basée sur le traitement d'informations via 
-                des moyens électroniques (ordinateurs, systèmes numériques). 
-                Le terme couvre deux branches : 
-                l'une est théorique (définition de concepts et modèles),
-                l'autre est pratique (techniques de mise en œuvre)</p>
+          
                 </div>
     
                 

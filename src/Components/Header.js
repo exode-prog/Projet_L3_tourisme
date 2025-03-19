@@ -1,13 +1,23 @@
 import React from 'react'
 import Style from './Style.css'
 
+import logo from '../assets/Tourisme/logo.png';
+
 function Header(){
 
     return(
         <React.Fragment>
     
-    <nav className="navbar navbar-expand-lg ">
-        <div className="col-1 ">Salut je suis le logo  </div>
+     <nav className="navbar navbar-expand-lg" style={{ marginBottom: "0", marginTop: "0", paddingBottom: "0", paddingTop: "0" }}>
+    
+     <div className="col-1">
+  <img
+    src={logo}
+      className="img-fluid"
+    style={{ maxWidth: "100%", height: "100%" }}
+  />
+</div>
+
         <div className="container col-11" id="headerbg">
   <a className="navbar-brand text-warning fw-bold fs-2" href="#">Tableau de bord</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

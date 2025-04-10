@@ -1,71 +1,61 @@
-import React from 'react'
-import Style from './Style.css'
-import {FaFacebook, FaTwitter, FaLinkedin, FaYoutube} from 'react-icons/fa'
-import { DiJava } from 'react-icons/di'
+import React from 'react';
+import { FaFacebook, FaTwitter, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
-function Footer(){
+function Footer() {
+  return (
+    <footer className="bg-gray-800 text-white p-8">
+      <section className="flex justify-center items-center space-x-6 mb-6">
+        <span>Restez connectés sur nos réseaux sociaux :</span>
+        <div className="flex space-x-4">
+          <a href="#" className="text-white text-3xl hover:text-gray-400">
+            <FaFacebook />
+          </a>
+          <a href="#" className="text-white text-3xl hover:text-gray-400">
+            <FaTwitter />
+          </a>
+          <a href="#" className="text-white text-3xl hover:text-gray-400">
+            <FaLinkedin />
+          </a>
+          <a href="#" className="text-white text-3xl hover:text-gray-400">
+            <FaYoutube />
+          </a>
+        </div>
+      </section>
 
-    return(
-        <React.Fragment>
-            <footer id="footerbg" className="p-4">
-                <section className="d-flex justify-content-center">
-                    <div className="me-5 d-none d-lg-block mx-3">
-                        <span>Restez-connecter sur nos reseaux sociaux</span>
-                        
-                     </div>
-                     <div className="d-flex gap-3">
-                        <a href="#" className="text-white fs-3 mx-3">
-                            <FaFacebook />
-                        </a>
-                        <a href="#" className="text-white fs-3 mx-3">
-                            <FaTwitter />
-                        </a>
-                        <a href="#" className="text-white fs-3 mx-3 ">
-                            <FaLinkedin />
-                        </a>
-                        <a href="#" className="text-white fs-3 mx-3 ">
-                            <FaYoutube />
-                        </a>
-                    </div>
-                </section>
-                <div className="container p-4">
-                    <div className="row">
-                        <div className="col-sm-4">
-            <h5>Contacts</h5>
-            <h5>A propos</h5>
-          
-                </div>
-    
-                
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Colonne Contacts */}
+        <div>
+          <h5 className="text-lg font-semibold mb-4">Contacts</h5>
+          <p>Email: info@tourisme-line.com</p>
+          <p>+221 700987679</p>
+        </div>
 
-                <div className="col-sm-2">
-                    <h5>Navigation</h5>
-                    <p><a href="">home</a></p>
-                    <p><a href="">Nous contacter</a></p>
-                    <p><a href="">A propos de nous </a></p>
-                </div>
+        {/* Colonne A propos */}
+        <div>
+          <h5 className="text-lg font-semibold mb-4">À propos</h5>
+          <p>Nous sommes une entreprise de tourisme dédiée à offrir les meilleures expériences en voyage.</p>
+        </div>
 
-                <div className="col-sm-2">
-                    <h5>Services</h5>
-                    <p><a href="">home</a></p>
-                    <p><a href="">Nous contacter</a></p>
-                    <p><a href="">A propos de nous </a></p>
-                </div>
+        {/* Colonne Navigation */}
+        <div>
+          <h5 className="text-lg font-semibold mb-4">Navigation</h5>
+          <ul>
+            <li><a href="/acceuil" className="hover:text-gray-400">Acceuil</a></li>
+            <li><a href="/contact" className="hover:text-gray-400">Nous contacter</a></li>
+            <li><a href="/aprpos" className="hover:text-gray-400">À propos de nous</a></li>
+          </ul>
+        </div>
 
-
-                <div className="col-sm-2">
-                    <h5>Adresse</h5>
-                    <p>Senegal</p>
-                    <p>Dakar Sacre-coeur</p>
-                    <p>+221 700987679</p>
-                </div>
-
-
-
-                </div>
-                </div>
-            </footer>
-        </React.Fragment>
-    )
+        {/* Colonne Adresse */}
+        <div>
+          <h5 className="text-lg font-semibold mb-4">Adresse</h5>
+          <p>Sénégal</p>
+          <p>Dakar Sacré-Cœur</p>
+          <p>+221 700987679</p>
+        </div>
+      </div>
+    </footer>
+  );
 }
-export default Footer
+
+export default Footer;

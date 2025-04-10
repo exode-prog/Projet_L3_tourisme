@@ -1,60 +1,155 @@
-import React from 'react'
-import Style from './Style.css'
+import React, { useState, useEffect, useRef } from "react";
+import { FaUserCircle, FaBars } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-import logo from '../assets/Tourisme/logo.png';
+const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const userMenuRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
-function Header(){
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
-    return(
-        <React.Fragment>
-    
-     <nav className="navbar navbar-expand-lg" style={{ marginBottom: "0", marginTop: "0", paddingBottom: "0", paddingTop: "0" }}>
-    
-     <div className="col-1">
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        userMenuRef.current &&
+        !userMenuRef.current.contains(event.target)
+      ) {
+        setMenuOpen(false);
+      }
+
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+    setMobileMenuOpen(false);
+  };
+
+  return (
+    <header className="bg-gray-800 text-white p-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        {/* Logo */}
+    <div className="flex items-center space-x-3">
+    <Link
+  to="/"
+  className="flex items-center space-x-3"
+>
   <img
-    src={logo}
-      className="img-fluid"
-    style={{ maxWidth: "100%", height: "100%" }}
+    src="https://via.placeholder.com/40"
+    alt="Tourisme-Line Logo"
+    className="h-10 w-10 rounded-full"
   />
+  <span className="text-2xl font-bold text-white no-underline hover:no-underline">
+    Tourisme-Travel
+  </span>
+</Link>
+
 </div>
 
-        <div className="container col-11" id="headerbg">
-  <a className="navbar-brand text-warning fw-bold fs-2" href="#">Tableau de bord</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
+        {/* Menu principal - Desktop */}
+        <nav className="hidden md:flex space-x-6">
+          <Link to="/dashboard" className="hover:text-gray-400">
+            Tableau de bord
+          </Link>
+          <a href="/apropos" className="hover:text-gray-400">
+            A propos
+          </a>
+          <a href="#services" className="hover:text-gray-400">
+            Services
+          </a>
+          <a href="/contact" className="hover:text-gray-400">
+            Contact
+          </a>
+        </nav>
 
-  <div className="collapse navbar-collapse"  id="navbarSupportedContent">
-    <ul className="navbar-nav mr-auto">
-      <li className="nav-item active">
-        <a className="nav-link"  id="navbarSupportedContent"  href="#">Home <span className="sr-only">(current)</span></a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#"   id="navbarSupportedContent">Reservation</a>
-      </li>
+        {/* Menu utilisateur + hamburger */}
+        <div className="flex items-center space-x-4">
+          {/* Hamburger - Mobile only */}
+          <div className="md:hidden" ref={mobileMenuRef}>
+            <button onClick={toggleMobileMenu} className="text-2xl">
+              <FaBars />
+            </button>
+          </div>
 
-      <li className="nav-item">
-        <a className="nav-link" href="#"   id="navbarSupportedContent">Hebergement</a>
-      </li>
+          {/* Icône utilisateur */}
+          <div ref={userMenuRef}>
+            <button onClick={toggleMenu} className="text-xl focus:outline-none">
+              <FaUserCircle />
+            </button>
 
-      <li className="nav-item">
-        <a className="nav-link" href="#"   id="navbarSupportedContent">Visites</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#"   id="navbarSupportedContent">Articles</a>
-      </li>
-  
-    </ul>
-    <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search"/>
-      <button className="btn btn-outline-dark my-2 my-sm-0 " type="submit">Rechercher</button>
-      
-    </form>
-  </div>
-  </div>
-</nav>
-    
-        </React.Fragment>
-    )
-}
-export default Header
+            {/* Dropdown utilisateur */}
+            {menuOpen && (
+              <div className="absolute right-4 top-16 w-48 bg-white text-gray-800 shadow-xl rounded-xl z-50 p-3 space-y-2 animate-fade-in">
+                <Link
+                  to="/Authentification/Connexion"
+                  onClick={handleLinkClick}
+                  className="block px-4 py-2 text-sm font-medium bg-blue-100 hover:bg-blue-200 rounded-lg no-underline transition duration-200"
+                >
+                  Se connecter
+                </Link>
+                <Link
+                  to="/Authentification/Inscription"
+                  onClick={handleLinkClick}
+                  className="block px-4 py-2 text-sm font-medium bg-green-100 hover:bg-green-200 rounded-lg no-underline transition duration-200"
+                >
+                  Créer un compte
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Menu mobile déroulant */}
+      {mobileMenuOpen && (
+        <div
+          ref={mobileMenuRef}
+          className="md:hidden mt-4 flex flex-col space-y-2 text-center bg-gray-700 rounded-lg p-4"
+        >
+          <Link
+            to="/dashboard"
+            onClick={handleLinkClick}
+            className="text-white hover:text-gray-300"
+          >
+            Tableau de bord
+          </Link>
+          <a
+            href="#about"
+            onClick={handleLinkClick}
+            className="text-white hover:text-gray-300"
+          >
+            About
+          </a>
+          <a
+            href="#services"
+            onClick={handleLinkClick}
+            className="text-white hover:text-gray-300"
+          >
+            Services
+          </a>
+          <a
+            href="#contact"
+            onClick={handleLinkClick}
+            className="text-white hover:text-gray-300"
+          >
+            Contact
+          </a>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;

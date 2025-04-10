@@ -7,6 +7,9 @@ import fourth from '../assets/Tourisme/eau.jpg';
 import fifth from '../assets/Tourisme/plage.jpg';
 import sixth from '../assets/Tourisme/rocher.jpg';
 
+import { FaBed, FaCar, FaUtensils, FaCut } from 'react-icons/fa'; // Icônes des services
+
+
 import "./Style.css"; 
 import image1 from "../assets/Tourisme/avion.jpg";
 import image2 from  "../assets/Tourisme/camera.jpg";
@@ -236,7 +239,7 @@ const Home = () => {
               style={dotStyle({ currentIndex, slideIndex: index })}
               onClick={() => goToSlide(index)}
             >
-              ●
+              
             </div>
           ))}
         </div>
@@ -249,6 +252,7 @@ const Home = () => {
     <div className="container py-5 text-center">
       <h1 className="fw-bold text-uppercase mb-4">Découvrir le monde </h1>
       </div>
+
 
 
 
@@ -373,6 +377,44 @@ const Home = () => {
   }
 `}</style>
 
+
+
+<div className="container py-5 text-center">
+  <h2 className="fw-bold text-primary mb-4">Nos Services</h2>
+  <p className="lead text-dark mb-5">
+    Explorez nos services pour rendre votre expérience de voyage inoubliable !
+  </p>
+
+  <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+    {/* Hébergement */}
+    <div className="flex flex-col items-center bg-gray-700 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all">
+      <FaBed className="text-4xl mb-4 text-blue-500" />
+      <h3 className="font-semibold text-lg mb-2">Hébergement</h3>
+      <p className="text-center">Trouvez le logement idéal pour votre séjour, confortable et adapté à vos besoins.</p>
+    </div>
+
+    {/* Location de voiture */}
+    <div className="flex flex-col items-center bg-gray-700 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all">
+      <FaCar className="text-4xl mb-4 text-green-500" />
+      <h3 className="font-semibold text-lg mb-2">Location de voiture</h3>
+      <p className="text-center">Louez une voiture pour explorer vos destinations préférées en toute liberté.</p>
+    </div>
+
+    {/* Restaurant */}
+    <div className="flex flex-col items-center bg-gray-700 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all">
+      <FaUtensils className="text-4xl mb-4 text-red-500" />
+      <h3 className="font-semibold text-lg mb-2">Restaurant</h3>
+      <p className="text-center">Découvrez une variété de restaurants offrant des repas délicieux et authentiques.</p>
+    </div>
+
+    {/* Salon de coiffure */}
+    <div className="flex flex-col items-center bg-gray-700 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all">
+      <FaCut className="text-4xl mb-4 text-purple-500" />
+      <h3 className="font-semibold text-lg mb-2">Salon de coiffure</h3>
+      <p className="text-center">Offrez-vous une coupe de cheveux ou un soin capillaire dans nos salons partenaires.</p>
+    </div>
+  </div>
+</div>
 
 
     </React.Fragment>

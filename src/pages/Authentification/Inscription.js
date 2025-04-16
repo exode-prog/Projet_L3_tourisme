@@ -1,68 +1,133 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import axios from 'axios';
 
 const Register = () => {
+  const [formData, setFormData] = useState({
+    prenom: '',
+    nom: '',
+    numero: '',
+    email: '',
+    adresse: '',
+    password: '',
+    confirmPassword: ''
+  });
+
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
-  const isPasswordMatch = password === confirmPassword;
-  const isValidEmail = email.includes('@');
+
+  const isPasswordMatch = formData.password === formData.confirmPassword;
+  const isValidEmail = formData.email.includes('@');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ 
+      ...formData, 
+      [name]: name === 'numero' ? parseInt(value) || '' : value 
+    });
+  };
+   
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!isPasswordMatch || !isValidEmail) {
+      setMessage("Vérifiez vos informations.");
+      return;
+    }
+
+    try {
+      const { confirmPassword, ...dataToSend } = formData;
+
+      const response = await axios.post('http://192.168.1.99:4000/touriste', dataToSend);
+      if (response.status === 201 || response.status === 200) {
+        setMessage('Inscription réussie ! Redirection...');
+        setTimeout(() => {
+          navigate('/Connexion');
+        }, 1500);
+      }
+    } catch (error) {
+      if (error.response?.status === 409) {
+        setMessage("Cet email est déjà utilisé.");
+      } else {
+        setMessage("Erreur lors de l'inscription.");
+      }
+    }
+  };
 
   return (
     <div
       className="min-h-screen w-full bg-cover bg-center relative px-4"
       style={{ backgroundImage: "url('/images/bg-register.jpg')" }}
     >
-      {/* Overlay bleu transparent */}
       <div className="absolute inset-0 bg-blue-900 bg-opacity-60 backdrop-blur-sm"></div>
 
-      {/* Contenu centré */}
       <div className="relative z-10 flex items-center justify-center min-h-screen">
-        <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-md sm:max-w-sm md:max-w-sm lg:max-w-sm">
-          <h2 className="text-xl sm:text-2xl font-bold text-center text-blue-700 mb-4">Créer un compte</h2>
+        <div className="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md">
+          <h2 className="text-2xl font-bold text-center text-blue-700 mb-4">Créer un compte</h2>
 
-          <form className="space-y-3 text-sm">
-            <div>
-              <label className="block font-medium text-gray-700">Prénom</label>
-              <input type="text" className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400" />
-            </div>
+          {message && <div className="text-center text-sm mb-3 text-red-600">{message}</div>}
 
-            <div>
-              <label className="block font-medium text-gray-700">Nom</label>
-              <input type="text" className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400" />
-            </div>
-
-            <div>
-              <label className="block font-medium text-gray-700">Téléphone</label>
-              <input type="number" className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400" />
-            </div>
+          <form onSubmit={handleSubmit} className="space-y-3 text-sm">
+            {['prenom', 'nom', 'numero'].map((field) => (
+              <div key={field}>
+                <label className="block font-medium text-gray-700 capitalize">{field}</label>
+                <input
+                  type={field === 'numero' ? 'number' : 'text'}
+                  name={field}
+                  value={formData[field]}
+                  onChange={handleChange}
+                  className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+                  required
+                />
+              </div>
+            ))}
 
             <div>
               <label className="block font-medium text-gray-700">Email</label>
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className={`w-full mt-1 p-2 border rounded-md focus:ring-2 ${
-                  email && !isValidEmail ? "border-red-500 ring-red-300" : "focus:ring-blue-400"
+                  formData.email && !isValidEmail
+                    ? "border-red-500 ring-red-300"
+                    : "focus:ring-blue-400"
                 }`}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                required
               />
-              {email && !isValidEmail && (
+              {formData.email && !isValidEmail && (
                 <p className="text-xs text-red-600 mt-1">L'email doit contenir un @.</p>
               )}
+            </div>
+
+            <div>
+              <label className="block font-medium text-gray-700">Adresse</label>
+              <input
+                type="text"
+                name="adresse"
+                value={formData.adresse}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400"
+                required
+              />
             </div>
 
             <div>
               <label className="block font-medium text-gray-700">Mot de passe</label>
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   className="w-full mt-1 p-2 pr-10 border rounded-md focus:ring-2 focus:ring-blue-400"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
                 <button
                   type="button"
@@ -77,23 +142,20 @@ const Register = () => {
             <div>
               <label className="block font-medium text-gray-700">Confirmer le mot de passe</label>
               <input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
                 className={`w-full mt-1 p-2 border rounded-md focus:ring-2 ${
-                  confirmPassword && !isPasswordMatch
+                  formData.confirmPassword && !isPasswordMatch
                     ? "border-red-500 ring-red-300"
                     : "focus:ring-blue-400"
                 }`}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
               />
-              {!isPasswordMatch && confirmPassword && (
+              {!isPasswordMatch && formData.confirmPassword && (
                 <p className="text-xs text-red-600 mt-1">Les mots de passe ne correspondent pas.</p>
               )}
-            </div>
-
-            <div>
-              <label className="block font-medium text-gray-700">Adresse</label>
-              <input type="text" className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400" />
             </div>
 
             <button
@@ -107,7 +169,7 @@ const Register = () => {
 
           <p className="text-xs text-gray-600 text-center mt-3">
             Vous avez déjà un compte ?{" "}
-            <a href="./Connexion" className="text-blue-600 font-medium hover:underline">
+            <a href="/Connexion" className="text-blue-600 font-medium hover:underline">
               Connectez-vous
             </a>
           </p>

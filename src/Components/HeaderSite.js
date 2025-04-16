@@ -12,6 +12,10 @@ const HeaderSite = () => {
   const toggleProfile = () => setProfileOpen(!profileOpen);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false); // Fermer le menu mobile lorsque le lien est cliqué
+  };
+
   const user = {
     firstName: "Exode",
     lastName: "NGAMENEDE",
@@ -31,14 +35,16 @@ const HeaderSite = () => {
   return (
     <header className="bg-gray-800 text-white p-4 shadow-md">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
-        {/* Logo + Titre */}
+        {/* Logo + Titre avec lien vers /dashboard */}
         <div className="flex items-center space-x-2">
-          <img
-            src="https://via.placeholder.com/40"
-            alt="Tourisme-Line Logo"
-            className="h-10 w-10 rounded-full"
-          />
-          <span className="text-lg md:text-2xl font-bold">Tourisme-Travel</span>
+          <Link to="/dashboard">
+            <img
+              src="https://via.placeholder.com/40"
+              alt="Tourisme-Line Logo"
+              className="h-10 w-10 rounded-full"
+            />
+            <span className="text-lg md:text-2xl font-bold">Tourisme-Travel</span>
+          </Link>
         </div>
 
         {/* Bouton menu mobile */}
@@ -49,8 +55,8 @@ const HeaderSite = () => {
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        {/* Barre de recherche */}
-        <div className="relative w-full max-w-xs mt-3 md:mt-0">
+        {/* Barre de recherche (à droite) */}
+        <div className="relative w-full max-w-xs mt-3 md:mt-0 ml-auto">
           <input
             type="text"
             value={searchQuery}
@@ -63,11 +69,11 @@ const HeaderSite = () => {
 
         {/* Navigation Desktop */}
         <nav className="hidden md:flex flex-wrap justify-center md:justify-start gap-4 text-sm md:text-base ml-5">
-          <a href="#sites" className="hover:text-gray-300">Zones touristiques</a>
-          <a href="/guide" className="hover:text-gray-300">Guides</a>
-          <a href="#voiture" className="hover:text-gray-300">Nos services</a>
-          <a href="/apropos" className="hover:text-gray-300">À propos</a>
-          <a href="/contact" className="hover:text-gray-300">Contacts</a>
+          <a href="/Zonestouristiques" className="hover:text-gray-300" onClick={handleLinkClick}>Zones touristiques</a>
+          <a href="/guide" className="hover:text-gray-300" onClick={handleLinkClick}>Guides</a>
+          <a href="/Services" className="hover:text-gray-300" onClick={handleLinkClick}>Nos services</a>
+          <a href="/apropos" className="hover:text-gray-300" onClick={handleLinkClick}>À propos</a>
+          <a href="/contact" className="hover:text-gray-300" onClick={handleLinkClick}>Contacts</a>
         </nav>
 
         {/* Profil utilisateur */}
@@ -118,11 +124,11 @@ const HeaderSite = () => {
       {/* Navigation Mobile */}
       {isMobileMenuOpen && (
         <div className="md:hidden mt-3 space-y-2 text-sm bg-gray-700 p-4 rounded-md animate-fade-in-down">
-          <a href="#sites" className="block text-white hover:text-gray-300">Zones touristiques</a>
-          <a href="#hebergement" className="block text-white hover:text-gray-300">Guides</a>
-          <a href="#voiture" className="block text-white hover:text-gray-300">Nos services</a>
-          <a href="/apropos" className="block text-white hover:text-gray-300">A propos de nous</a>
-          <a href="/contact" className="block text-white hover:text-gray-300">Contacts</a>
+          <a href="/zonestouristiques" className="block text-white hover:text-gray-300" onClick={handleLinkClick}>Zones touristiques</a>
+          <a href="/guide" className="block text-white hover:text-gray-300" onClick={handleLinkClick}>Guides</a>
+          <a href="/Services" className="block text-white hover:text-gray-300" onClick={handleLinkClick}>Nos services</a>
+          <a href="/apropos" className="block text-white hover:text-gray-300" onClick={handleLinkClick}>A propos de nous</a>
+          <a href="/contact" className="block text-white hover:text-gray-300" onClick={handleLinkClick}>Contacts</a>
         </div>
       )}
     </header>

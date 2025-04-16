@@ -30,7 +30,7 @@ import image3 from "../assets/Tourisme/christ_bresil.webp";
 import image4 from "../assets/Tourisme/egypte.jpg";
 import image5 from "../assets/Tourisme/girafe.jpg";
 import image6 from "../assets/Tourisme/eiffel.jpg";
-import image7 from "../assets/Tourisme/delta-okavago.jpg";
+import image7 from "../assets/Tourisme/sable.jpg";
 import image8 from "../assets/Tourisme/goree.jpg";
 
 const settings = {
@@ -58,27 +58,32 @@ const data = [
   {
     image: image1,
     title: "Découvrez nos plages magnifiques et reposantes.",
-    link: "#plage",
+    link: "/typezone/plage",
   },
-  {
+   {
     image: image2,
-    title: "Parcourez nos villes avec votre appareil photo.",
-    link: "#monument",
+    title: "A la decouverte du desert .",
+    link: "/typezone/desert",
   },
   {
     image: image3,
-    title: "Admirez les monuments du monde dans un seul endroit.",
-    link: "#parc",
+    title: "Admirez les monuments et villes historiques du monde avec nous.",
+    link: "/typezone/monument",
   },
   {
     image: image4,
-    title: "Remontez dans le temps à travers nos sites historiques.",
-    link: "#parc",
+    title: "Decouvrez des cultures .",
+    link: "/typezone/culture",
+  },
+  {
+    image: image7,
+    title: "A la decouverte des montagnes .",
+    link: "/typezone/montagne",
   },
   {
     image: image5,
-    title: "Partez à l’aventure dans la nature avec notre faune locale.",
-    link: "#parc",
+    title: "Partez à l’aventure dans la nature dans nos foret,parcs et decouvrez la faune et la flore.",
+    link: "/typezone/foretParc",
   }
 ];
 

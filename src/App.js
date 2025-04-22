@@ -2,8 +2,34 @@
 //import './App.css';
 
 //Importation des routes 
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";  //localisation 
+import { BrowserRouter as Router, Routes, Route, useLocation,Navigate } from "react-router-dom";  //localisation 
+
+//Administration
+import DashboardAdmin from "./pages/Admin/DashboardAdmin"
+import DashboardGuide from "./pages/Guides/DashboardGuide"
+import ConnexionAdmin from "./pages/Admin/ConnexionAdmin"
+import ConnexionGuide from "./pages/Guides/ConnexionGuide"
+import DetailTouriste from "./pages/Admin/DetailTouriste"
+import DetailGuide from "./pages/Admin/DetailGuide"
+import DetailVisite from "./pages/Admin/DetailVisite"
+import DetailAdmin from "./pages/Admin/DetailAdmin"
+import DetailFacture from "./pages/Admin/DetailFacture"
+import CreationTouriste from "./pages/Admin/CreationTouriste"
+import CreationAdmin from "./pages/Admin/CreationAdmin"
+import CreationVisite from "./pages/Admin/CreationVisite"
+import CreationGuide from "./pages/Admin/CreationGuide"
+import ModifierTouriste from "./pages/Admin/ModifierTouriste"
+
+import ModifierAdmin from "./pages/Admin/ModifierAdmin";
+import ModifierGuide from "./pages/Admin/ModifierGuide";
+import ModifierVisite from "./pages/Admin/ModifierVisite";
+
+//
+
+
+//les pages
 import Dashboard from "./pages/dashboard"
+
 import Home from "./pages/Home"
 
 import Connexion from "./pages/Authentification/Connexion";
@@ -39,6 +65,8 @@ import TypePlage from "./pages/typezone/plage";
 import Reservation from "./pages/reservation";
 
 
+
+
 /*
 import Home from "./Components/Home"
 import Home2 from "./Components/Home2"
@@ -59,6 +87,9 @@ function App() {
 
   const isHomePage = path === "/";
   const isAuthPage = path === "/authentification/connexion" || path === "/authentification/inscription";
+
+  //Acces protege a la page admin
+  const isAuthenticated = !!localStorage.getItem("adminToken");
 
   // Liste des routes connues
   const knownRoutes = [
@@ -83,7 +114,9 @@ function App() {
     "/typezone/foretParc",
     "/typezone/montagne",
   
-    "/reservation"
+    "/reservation",
+    "/Admin/DashboardAdmin"
+
   ];
 
   const isKnownRoute = knownRoutes.includes(path);
@@ -106,6 +139,7 @@ function App() {
         <Route path="/boutonDefilant" element={<BoutonDefilant />} />
         <Route path="/zonestouristiques" element={<ZonesTouristiques />} />
         <Route path="/reservation" element={<Reservation />} />
+       
 
         {/* pour les types de zones de visite */}
         <Route path="/typezone/plage" element={<TypePlage />} />
@@ -125,6 +159,49 @@ function App() {
         <Route path="/authentification/connexion" element={<Connexion />} />
         <Route path="/authentification/inscription" element={<Inscription />} />
         <Route path="/authentification/profileuser" element={<ProfileUser />} />
+
+
+  {/* ✅ Administration */}
+        <Route path="/admin/dashboardAdmin" element={<DashboardAdmin />} />
+        <Route path="/guides/dashboardGuide" element={<DashboardGuide />} />
+        <Route path="/admin/detailTouriste" element={<DetailTouriste />} />
+        <Route path="/admin/detailGuide" element={<DetailGuide />} />
+        <Route path="/admin/detailVisite" element={<DetailVisite />} />
+        <Route path="/admin/detailAdmin" element={<DetailAdmin />} />
+        <Route path="/admin/detailFacture" element={<DetailFacture />} />
+        <Route path="/admin/CreationTouriste" element={<CreationTouriste />} />
+        <Route path="/admin/CreationAdmin" element={<CreationAdmin />} />
+       
+        <Route path="/admin/CreationGuide" element={<CreationGuide />} />
+        <Route path="/admin/CreationVisite" element={<CreationVisite />} />
+        <Route path="/admin/modifierTouriste/:id" element={<ModifierTouriste />} />
+        <Route path="/admin/modifierAdmin/:id" element={<ModifierAdmin />} />
+        <Route path="/admin/modifierGuide/:id" element={<ModifierGuide />} />
+        <Route path="/admin/modifierVisite/:id" element={<ModifierVisite />} />
+
+
+        <Route path="/Admin" element={<Navigate to="/Admin/connexionadmin" />} />
+        <Route path="/Guides" element={<Navigate to="/Guides/connexionguide" />} />
+        <Route path="/Admin/connexionadmin" element={<ConnexionAdmin />} />
+        <Route path="/Guides/connexionguide" element={<ConnexionGuide />} />
+
+        
+        {/* Dashboard protégé pour l'admin */}
+        <Route
+          path="/Admin/DashboardAdmin"
+          element={
+            isAuthenticated ? <DashboardAdmin /> : <Navigate to="/Admin/connexionadmin" />
+          }
+        />
+
+        {/* Dashboard protégé pour l'admin */}
+          <Route
+          path="/Admin/DashboardGuide"
+          element={
+            isAuthenticated ? <DashboardGuide /> : <Navigate to="/Admin/connexionguide" />
+          }
+        />
+
 
         {/* pour les guides */}
         <Route path="/guide" element={<Guide />} />

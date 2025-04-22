@@ -3,27 +3,34 @@ import React from "react";
 const services = [
   {
     id: 1,
+    titre: "Tourisme",
+    description: "Trouvez les meilleurs hôtels, auberges et logements confortables pour un séjour inoubliable.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=60",
+    link: "/zonestouristiques"
+  },
+  {
+    id: 2,
     titre: "Hébergement",
     description: "Trouvez les meilleurs hôtels, auberges et logements confortables pour un séjour inoubliable.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=60",
     link: "/service/hebergement"
   },
   {
-    id: 2,
+    id: 3,
     titre: "Transport",
     description: "Des voitures avec chauffeur, des bus touristiques et des navettes disponibles selon vos besoins.",
     image: "https://images.unsplash.com/photo-1549921296-3a8b84d54f4c?auto=format&fit=crop&w=800&q=60",
     link: "/service/transport"
   },
   {
-    id: 3,
+    id: 4,
     titre: "Restauration",
     description: "Savourez une cuisine locale et internationale dans nos restaurants partenaires.",
     image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=800&q=60",
     link: "/service/restauration"
   },
   {
-    id: 4,
+    id: 5,
     titre: "Coiffure & Esthétique",
     description: "Prenez soin de vous avec nos partenaires salons de beauté et coiffeurs qualifiés.",
     image: "https://images.unsplash.com/photo-1604112900927-e4d6d3ceac5f?auto=format&fit=crop&w=800&q=60",

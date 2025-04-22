@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 
-const Register = () => {
+const CreationTouriste = () => {
   const [formData, setFormData] = useState({
     prenom: '',
     nom: '',
@@ -44,11 +44,12 @@ const Register = () => {
       const { confirmPassword, ...dataToSend } = formData;
 
       const response = await axios.post('http://192.168.1.15:4000/touriste', dataToSend);
+      
       if (response.status === 201 || response.status === 200) {
         setMessage('✅ Inscription réussie ! Redirection...');
         setLoading(true); // Active le spinner
         setTimeout(() => {
-          navigate('/Authentification/Connexion');
+          navigate('/Admin/DashboardAdmin');
         }, 2000);
       }
     } catch (error) {
@@ -70,7 +71,7 @@ const Register = () => {
 
       <div className="relative z-10 flex items-center justify-center min-h-screen">
         <div className="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md">
-          <h2 className="text-2xl font-bold text-center text-blue-700 mb-4">Créer un compte</h2>
+          <h2 className="text-2xl font-bold text-center text-blue-700 mb-4">Création d'un compte</h2>
 
           {message && (
             <div className={`flex items-center justify-center gap-2 text-center text-sm mb-3 ${
@@ -188,20 +189,15 @@ const Register = () => {
               className="w-full py-2 mt-2 bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition"
               disabled={!isPasswordMatch || !isValidEmail}
             >
-              S'inscrire
+              Ajouter
             </button>
           </form>
 
-          <p className="text-xs text-gray-600 text-center mt-3">
-            Vous avez déjà un compte ?{" "}
-            <a href="./Connexion" className="text-blue-600 font-medium hover:underline">
-              Connectez-vous
-            </a>
-          </p>
+         
         </div>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default CreationTouriste;

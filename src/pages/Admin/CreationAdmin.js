@@ -3,20 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 
-const Register = () => {
+const CreationAdmin = () => {
   const [formData, setFormData] = useState({
     prenom: '',
     nom: '',
-    numero: '',
+    telephone: '',
     email: '',
-    adresse: '',
     password: '',
     confirmPassword: ''
   });
 
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false); // Nouveau pour spinner
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
@@ -28,35 +27,35 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'numero' ? parseInt(value) || '' : value
+      [name]: name === 'telephone' ? parseInt(value) || '' : value
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!isPasswordMatch || !isValidEmail) {
-      setMessage("Vérifiez vos informations.");
+    if (!formData.password || !isPasswordMatch || !isValidEmail) {
+      setMessage("Veuillez vérifier les informations saisies.");
       return;
     }
 
     try {
       const { confirmPassword, ...dataToSend } = formData;
+      const response = await axios.post('http://192.168.1.15:4000/admin', dataToSend);
 
-      const response = await axios.post('http://192.168.1.15:4000/touriste', dataToSend);
       if (response.status === 201 || response.status === 200) {
         setMessage('✅ Inscription réussie ! Redirection...');
-        setLoading(true); // Active le spinner
+        setLoading(true);
         setTimeout(() => {
-          navigate('/Authentification/Connexion');
+          navigate('/Admin/DashboardAdmin');
         }, 2000);
       }
     } catch (error) {
       setLoading(false);
       if (error.response?.status === 409) {
-        setMessage("Cet email est déjà utilisé.");
+        setMessage("❌ Cet email est déjà utilisé.");
       } else {
-        setMessage("Erreur lors de l'inscription.");
+        setMessage("❌ Erreur lors de l'inscription.");
       }
     }
   };
@@ -70,7 +69,7 @@ const Register = () => {
 
       <div className="relative z-10 flex items-center justify-center min-h-screen">
         <div className="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md">
-          <h2 className="text-2xl font-bold text-center text-blue-700 mb-4">Créer un compte</h2>
+          <h2 className="text-2xl font-bold text-center text-blue-700 mb-4">Création d'un compte</h2>
 
           {message && (
             <div className={`flex items-center justify-center gap-2 text-center text-sm mb-3 ${
@@ -98,11 +97,13 @@ const Register = () => {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-3 text-sm">
-            {['prenom', 'nom', 'numero'].map((field) => (
+            {['prenom', 'nom', 'telephone'].map((field) => (
               <div key={field}>
-                <label className="block font-medium text-gray-700 capitalize">{field}</label>
+                <label className="block font-medium text-gray-700 capitalize">
+                  {field === 'telephone' ? 'Téléphone' : field}
+                </label>
                 <input
-                  type={field === 'numero' ? 'number' : 'text'}
+                  type={field === 'telephone' ? 'number' : 'text'}
                   name={field}
                   value={formData[field]}
                   onChange={handleChange}
@@ -129,18 +130,6 @@ const Register = () => {
               {formData.email && !isValidEmail && (
                 <p className="text-xs text-red-600 mt-1">L'email doit contenir un @.</p>
               )}
-            </div>
-
-            <div>
-              <label className="block font-medium text-gray-700">Adresse</label>
-              <input
-                type="text"
-                name="adresse"
-                value={formData.adresse}
-                onChange={handleChange}
-                className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-blue-400"
-                required
-              />
             </div>
 
             <div>
@@ -181,6 +170,9 @@ const Register = () => {
               {!isPasswordMatch && formData.confirmPassword && (
                 <p className="text-xs text-red-600 mt-1">Les mots de passe ne correspondent pas.</p>
               )}
+              {isPasswordMatch && formData.confirmPassword && (
+                <p className="text-xs text-green-600 mt-1">Les mots de passe correspondent.</p>
+              )}
             </div>
 
             <button
@@ -188,20 +180,13 @@ const Register = () => {
               className="w-full py-2 mt-2 bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition"
               disabled={!isPasswordMatch || !isValidEmail}
             >
-              S'inscrire
+              Ajouter 
             </button>
           </form>
-
-          <p className="text-xs text-gray-600 text-center mt-3">
-            Vous avez déjà un compte ?{" "}
-            <a href="./Connexion" className="text-blue-600 font-medium hover:underline">
-              Connectez-vous
-            </a>
-          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default CreationAdmin;

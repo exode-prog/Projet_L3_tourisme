@@ -18,7 +18,7 @@ const ModifierVisite = () => {
   useEffect(() => {
     const fetchVisite = async () => {
       try {
-        const res = await axios.get(`http://192.168.1.15:4000/visite/${id}`);
+        const res = await axios.get(`http://192.168.3.11:4000/visite/${id}`);
         setVisite(res.data);
       } catch (err) {
         setMessage("Erreur lors du chargement des données.");
@@ -50,7 +50,7 @@ const ModifierVisite = () => {
     }
 
     try {
-      await axios.put(`http://192.168.1.15:4000/visite/${id}`, formData, {
+      await axios.put(`http://192.168.3.11:4000/visite/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

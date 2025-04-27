@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import ExodusPhoto from './Exodus.jpg';
+import MariamPhoto from './Mariam.jpeg';
+
 const guides = [
   {
     id: 1,
-    nom: "Diallo",
-    prenom: "Amadou",
+    nom: "NGAMENEDE",
+    prenom: "EXODE",
     zone: "Montagnes du Fouta",
     specialite: "Randonnée",
-    commentaire: "Amadou est passionné par la nature et les sentiers reculés.",
-    photo: "https://randomuser.me/api/portraits/men/32.jpg"
+    commentaire: "Exode est passionné par la nature et les sentiers reculés.",
+    photo: ExodusPhoto
   },
   {
     id: 2,
-    nom: "Camara",
-    prenom: "Fatou",
+    nom: "RIANG",
+    prenom: "MARIAM",
     zone: "Plages de la côte",
     specialite: "Culture et traditions",
-    commentaire: "Fatou adore partager les histoires locales et les chants traditionnels.",
-    photo: "https://randomuser.me/api/portraits/women/65.jpg"
+    commentaire: "MARIAM adore partager les histoires locales et les chants traditionnels.",
+    photo: MariamPhoto
   }
 ];
 

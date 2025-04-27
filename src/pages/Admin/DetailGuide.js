@@ -31,7 +31,7 @@ const DetailGuide = () => {
 
   const fetchGuides = async () => {
     try {
-      const res = await axios.get("http://192.168.1.15:4000/guide");
+      const res = await axios.get("http://192.168.3.11:4000/guide");
       setGuides(res.data);
       setLoading(false);
     } catch (err) {
@@ -47,7 +47,7 @@ const DetailGuide = () => {
     const token = localStorage.getItem("token");
 
     try {
-      await axios.delete(`http://192.168.1.15:4000/guide/${id}`, {
+      await axios.delete(`http://192.168.3.11:4000/guide/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

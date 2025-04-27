@@ -36,11 +36,11 @@ const DetailVisite = () => {
     try {
       let res;
       if (search.pays || search.ville || search.type) {
-        res = await axios.get("http://192.168.1.15:4000/visite/search", {
+        res = await axios.get("http://192.168.3.11:4000/visite/search", {
           params: search,
         });
       } else {
-        res = await axios.get("http://192.168.1.15:4000/visite");
+        res = await axios.get("http://192.168.3.11:4000/visite");
       }
       setVisites(res.data);
     } catch (err) {
@@ -56,7 +56,7 @@ const DetailVisite = () => {
     const token = localStorage.getItem("token");
 
     try {
-      await axios.delete(`http://192.168.1.15:4000/visite/${id}`, {
+      await axios.delete(`http://192.168.3.11:4000/visite/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setVisites(visites.filter((v) => v.id_viste !== id));
@@ -194,7 +194,7 @@ const DetailVisite = () => {
                     <button
                       className="bg-red-600 hover:bg-red-700 text-white p-2 rounded"
                       title="Supprimer"
-                      onClick={() => supprimerVisite(visite.id_viste)}
+                      onClick={() => supprimerVisite(visite.id_visite)}
                     >
                       <FaTrash />
                     </button>

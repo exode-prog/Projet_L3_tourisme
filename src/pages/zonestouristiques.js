@@ -7,6 +7,8 @@ import Foret from '../assets/Tourisme/parc-national-des-virunga.jpg';
 import Desert from '../assets/Tourisme/sable.jpg';
 import Montagne from '../assets/Tourisme/kilima.jpg';
 
+import Tour from './Tour.jpg';
+
 const zones = [
   {
     id: 1,
@@ -20,21 +22,28 @@ const zones = [
     titre: "Forêts",
     description: "Les forêts offrent une expérience immersive dans la nature, un lieu de tranquillité et de beauté. La randonnée et l'observation de la faune sont des activités populaires dans les forêts tropicales et tempérées.",
     image: Foret,
-    link: "/endroit_forestier"  // Lien vers la page de détails
+    link: "/typezone/foretParc"  // Lien vers la page de détails
   },
   {
     id: 3,
-    titre: "Déserts",
-    description: "Les déserts offrent des paysages époustouflants, souvent silencieux et mystérieux. C'est l'endroit idéal pour les aventuriers en quête de paysages spectaculaires et de sensations fortes.",
-    image: Desert,
-    link: "/endroit_desertique"  // Lien vers la page de détails
+    titre: "Monuments",
+    description: "Les grand monuments du mondes.",
+    image: Tour,
+    link: "/typezone/monument"  // Lien vers la page de détails
   },
   {
     id: 4,
+    titre: "Déserts",
+    description: "Les déserts offrent des paysages époustouflants, souvent silencieux et mystérieux. C'est l'endroit idéal pour les aventuriers en quête de paysages spectaculaires et de sensations fortes.",
+    image: Desert,
+    link: "/typezone/desert"  // Lien vers la page de détails
+  },
+  {
+    id: 5,
     titre: "Montagnes",
     description: "Les montagnes offrent des panoramas spectaculaires et sont idéales pour les passionnés de randonnée et d'escalade. Les paysages montagneux peuvent varier, des sommets enneigés aux forêts verdoyantes.",
     image: Montagne,
-    link: "/endroit_montagneux"  // Lien vers la page de détails
+    link: "/typezone/montagne"  // Lien vers la page de détails
   }
 ];
 

@@ -41,7 +41,7 @@ const CreationAdmin = () => {
 
     try {
       const { confirmPassword, ...dataToSend } = formData;
-      const response = await axios.post('http://192.168.1.15:4000/admin', dataToSend);
+      const response = await axios.post('http://192.168.3.11:4000/admin', dataToSend);
 
       if (response.status === 201 || response.status === 200) {
         setMessage('✅ Inscription réussie ! Redirection...');
@@ -53,9 +53,9 @@ const CreationAdmin = () => {
     } catch (error) {
       setLoading(false);
       if (error.response?.status === 409) {
-        setMessage("❌ Cet email est déjà utilisé.");
+        setMessage(" Cet email est déjà utilisé.");
       } else {
-        setMessage("❌ Erreur lors de l'inscription.");
+        setMessage(" Erreur lors de l'inscription.");
       }
     }
   };

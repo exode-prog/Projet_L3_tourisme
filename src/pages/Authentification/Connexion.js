@@ -31,7 +31,7 @@ const Login = () => {
     if (!isValidEmail) return;
 
     try {
-      const response = await fetch('http://192.168.1.15:4000/login', {
+      const response = await fetch('http://192.168.3.11:4000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

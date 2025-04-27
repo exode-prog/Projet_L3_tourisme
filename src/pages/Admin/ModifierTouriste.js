@@ -18,7 +18,7 @@ const ModifierTouriste = () => {
   useEffect(() => {
     const fetchTouriste = async () => {
       try {
-        const res = await axios.get(`http://192.168.1.15:4000/touriste/${id}`);
+        const res = await axios.get(`http://192.168.3.11:4000/touriste/${id}`);
         setTouriste(res.data);
       } catch (err) {
         setMessage("Erreur de récupération des données");
@@ -34,7 +34,7 @@ const ModifierTouriste = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://192.168.1.15:4000/touriste/${id}`, touriste);
+      await axios.put(`http://192.168.3.11:4000/touriste/${id}`, touriste);
       navigate("/Admin/detailTouriste"); // redirige après maj
     } catch (err) {
       setMessage("Erreur lors de la mise à jour");

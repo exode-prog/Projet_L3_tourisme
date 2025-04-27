@@ -24,7 +24,7 @@ const DetailTouriste = () => {
 
   const fetchTouristes = async () => {
     try {
-      const res = await axios.get("http://192.168.1.15:4000/touriste");
+      const res = await axios.get("http://192.168.3.11:4000/touriste");
       setTouristes(res.data);
       setLoading(false);
     } catch (err) {
@@ -38,7 +38,7 @@ const DetailTouriste = () => {
     if (!window.confirm("Voulez-vous vraiment supprimer ce touriste ?")) return;
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://192.168.1.15:4000/touriste/${id}`,
+      await axios.delete(`http://192.168.3.11:4000/touriste/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

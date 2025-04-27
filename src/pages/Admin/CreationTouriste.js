@@ -43,7 +43,7 @@ const CreationTouriste = () => {
     try {
       const { confirmPassword, ...dataToSend } = formData;
 
-      const response = await axios.post('http://192.168.1.15:4000/touriste', dataToSend);
+      const response = await axios.post('http://192.168.3.11:4000/touriste', dataToSend);
       
       if (response.status === 201 || response.status === 200) {
         setMessage('✅ Inscription réussie ! Redirection...');

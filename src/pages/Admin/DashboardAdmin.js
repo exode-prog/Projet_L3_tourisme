@@ -42,7 +42,7 @@ const DashboardAdmin = () => {
     { label: "Visites", icon: <FaMapMarkedAlt />, link: "/admin/DetailVisite" },
     { label: "Guides touristiques", icon: <FaMapSigns />, link: "/admin/DetailGuide" },
     { label: "Administrateurs", icon: <FaUserShield />, link: "/admin/DetailAdmin" },
-    { label: "Réservations", icon: <FaCalendarCheck />, link: "/admin/reservations" },
+    { label: "Réservations", icon: <FaCalendarCheck />, link: "/admin/reservationListe" },
     { label: "Factures", icon: <FaFileInvoice />, link: "/admin/DetailFacture" }
   ];
 

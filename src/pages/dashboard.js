@@ -13,7 +13,7 @@ import tourismeImg from "../assets/Tourisme/imageServices/tourisme.jpg";
 import voitureImg from "../assets/Tourisme/imageServices/voiture.jpg";
 import coiffureImg from "../assets/Tourisme/imageServices/coiffure.webp";
 import guideImg from "../assets/Tourisme/imageServices/guide.jpg";
-import heroImage from "../assets/Tourisme/imageServices/TourismGarde.jpg";
+import heroImage from "../assets/Tourisme/imageServices/dash1.jpg";
 
 // Images pour slider
 import first from '../assets/Tourisme/desert.jpg';

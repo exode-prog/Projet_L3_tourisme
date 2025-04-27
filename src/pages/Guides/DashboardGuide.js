@@ -9,7 +9,7 @@ const DashboardGuide = () => {
     // 1. Récupère les infos du guide via token
     const fetchGuideData = async () => {
       try {
-        const res = await axios.get('http://192.168.1.15:4000/api/guide/profile', {
+        const res = await axios.get('http://192.168.3.11:4000/guide/profile', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setGuide(res.data);
@@ -21,7 +21,7 @@ const DashboardGuide = () => {
     // 2. Récupère les réservations liées au guide
     const fetchReservations = async () => {
       try {
-        const res = await axios.get('http://192.168.1.15:4000/api/reservations/guide', {
+        const res = await axios.get('http://192.168.3.11:4000/reservations/guide', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setReservations(res.data);

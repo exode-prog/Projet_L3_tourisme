@@ -23,8 +23,14 @@ import ModifierTouriste from "./pages/Admin/ModifierTouriste"
 import ModifierAdmin from "./pages/Admin/ModifierAdmin";
 import ModifierGuide from "./pages/Admin/ModifierGuide";
 import ModifierVisite from "./pages/Admin/ModifierVisite";
+import ReservationListe from "./pages/Admin/ReservationListe";
 
-//
+
+
+//services ---type zones
+
+//Confirmation
+import Confirmation from "./pages/Confirmation";
 
 
 //les pages
@@ -41,11 +47,13 @@ import Guide from "./pages/guide"
 import GuideDetail from "./pages/guidedetail"
 import Apropos from "./pages/apropos.js"
 import Contact from "./pages/contact.js"
-import Monument from "./pages/typezone/monument.js"
-import Culture from "./pages/typezone/culture.js"
-import Desert from "./pages/typezone/desert"
-import ForetParc from "./pages/typezone/foretParc"
-import Montagne from "./pages/typezone/montagne"
+import Monument from "./pages/typezone/Monument.js"
+import Plage from "./pages/typezone/Plage.js"
+import Culture from "./pages/typezone/Culture.js"
+import Desert from "./pages/typezone/Desert.js"
+import ForetParc from "./pages/typezone/ForetParc"
+import Montagne from "./pages/typezone/Montagne"
+import ChoixGuide from "./pages/ChoixGuide.js"
 
 
 
@@ -61,7 +69,7 @@ import Acceuil from "./pages/acceuil";
 import Services from "./pages/Services";
 import BoutonDefilant from "./pages/boutonDefilant";
 import ZonesTouristiques from "./pages/zonestouristiques";
-import TypePlage from "./pages/typezone/plage";
+import TypePlage from "./pages/typezone/Plage";
 import Reservation from "./pages/reservation";
 
 
@@ -184,6 +192,26 @@ function App() {
         <Route path="/Guides" element={<Navigate to="/Guides/connexionguide" />} />
         <Route path="/Admin/connexionadmin" element={<ConnexionAdmin />} />
         <Route path="/Guides/connexionguide" element={<ConnexionGuide />} />
+        <Route path="/Admin/reservationListe" element={<ReservationListe />} />
+
+        {/*Typezone  ________________*/}
+
+        <Route path="/typezone/monument" element={<Monument />} />
+        <Route path="/typezone/plage" element={<Plage />} />
+        <Route path="/typezone/Desert" element={<Desert />} />
+        <Route path="/typezone/Montagne" element={<Montagne />} />
+        <Route path="/typezone/ForetParc" element={<ForetParc />} />
+
+
+        <Route path="/confirmation" element={<Confirmation />} />
+
+        
+        
+        
+        <Route path="/typezone/Culture" element={<Culture />} />
+        
+        
+        <Route path="/ChoixGuide" element={<ChoixGuide />} />
 
         
         {/* Dashboard protégé pour l'admin */}

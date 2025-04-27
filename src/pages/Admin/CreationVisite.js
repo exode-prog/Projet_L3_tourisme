@@ -34,7 +34,7 @@ const CreationVisite = () => {
     });
 
     try {
-      const res = await axios.post("http://192.168.1.15:4000/visite/", data);
+      const res = await axios.post("http://192.168.3.11:4000/visite/", data);
       setMessage("Visite ajoutée avec succès !");
       setFormData({
         pays: "",

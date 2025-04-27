@@ -24,7 +24,7 @@ const DetailAdmin = () => {
 
   const fetchAdmins = async () => {
     try {
-      const res = await axios.get("http://192.168.1.15:4000/admin");
+      const res = await axios.get("http://192.168.3.11:4000/admin");
       setAdmins(res.data);
       setLoading(false);
     } catch (err) {
@@ -38,7 +38,7 @@ const DetailAdmin = () => {
     if (!window.confirm("Voulez-vous vraiment supprimer cet administrateur ?")) return;
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://192.168.1.15:4000/admin/${id}`,
+      await axios.delete(`http://192.168.3.11:4000/admin/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

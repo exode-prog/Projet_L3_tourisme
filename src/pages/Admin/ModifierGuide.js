@@ -20,7 +20,7 @@ const ModifierGuide = () => {
   useEffect(() => {
     const fetchGuide = async () => {
       try {
-        const res = await axios.get(`http://192.168.1.15:4000/guide/${id}`);
+        const res = await axios.get(`http://192.168.3.11:4000/guide/${id}`);
         setGuide(res.data);
       } catch (err) {
         setMessage("Erreur de récupération des données");
@@ -53,7 +53,7 @@ const ModifierGuide = () => {
     }
 
     try {
-      await axios.put(`http://192.168.1.15:4000/guide/${id}`, formData, {
+      await axios.put(`http://192.168.3.11:4000/guide/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Important pour le téléchargement de fichiers
         },

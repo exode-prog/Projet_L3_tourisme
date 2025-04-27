@@ -19,7 +19,7 @@ const ProfileUser = () => {
       }
 
       try {
-        const response = await fetch("http://192.168.1.15:4000/profile", {
+        const response = await fetch("http://192.168.3.11:4000/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

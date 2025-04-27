@@ -18,7 +18,7 @@ const ModifierAdmin = () => {
   useEffect(() => {
     const fetchAdmin = async () => {
       try {
-        const res = await axios.get(`http://192.168.1.15:4000/admin/${id}`);
+        const res = await axios.get(`http://192.168.3.11:4000/admin/${id}`);
         setAdmin(res.data);
       } catch (err) {
         setMessage("Erreur lors de la récupération des données de l'administrateur.");
@@ -34,7 +34,7 @@ const ModifierAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://192.168.1.15:4000/admin/${id}`, admin);
+      await axios.put(`http://192.168.3.11:4000/admin/${id}`, admin);
       navigate("/Admin/detailAdmin"); // Redirection après mise à jour
     } catch (err) {
       setMessage("Erreur lors de la mise à jour des informations.");

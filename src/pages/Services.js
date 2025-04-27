@@ -1,11 +1,14 @@
 import React from "react";
+import ttt from '/home/perben/react/tourisme/src/pages/salo.jpg'
+import t from '/home/perben/react/tourisme/src/transport.jpg'
+import tv from '/home/perben/react/tourisme/src/pages/Tourisme.jpg'
 
 const services = [
   {
     id: 1,
     titre: "Tourisme",
     description: "Trouvez les meilleurs hôtels, auberges et logements confortables pour un séjour inoubliable.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=60",
+    image: tv,
     link: "/zonestouristiques"
   },
   {
@@ -19,7 +22,7 @@ const services = [
     id: 3,
     titre: "Transport",
     description: "Des voitures avec chauffeur, des bus touristiques et des navettes disponibles selon vos besoins.",
-    image: "https://images.unsplash.com/photo-1549921296-3a8b84d54f4c?auto=format&fit=crop&w=800&q=60",
+    image: t,
     link: "/service/transport"
   },
   {
@@ -33,7 +36,7 @@ const services = [
     id: 5,
     titre: "Coiffure & Esthétique",
     description: "Prenez soin de vous avec nos partenaires salons de beauté et coiffeurs qualifiés.",
-    image: "https://images.unsplash.com/photo-1604112900927-e4d6d3ceac5f?auto=format&fit=crop&w=800&q=60",
+    image: ttt,
     link: "/service/coiffure-esthetique"
   }
 ];

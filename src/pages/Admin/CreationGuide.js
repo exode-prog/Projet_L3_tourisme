@@ -45,7 +45,7 @@ const CreationGuide = () => {
     });
 
     try {
-      const res = await axios.post("http://192.168.1.15:4000/guide/", data);
+      const res = await axios.post("http://192.168.3.11:4000/guide/", data);
       setMessage("Guide ajouté avec succès !");
       setFormData({
         prenom: "",
